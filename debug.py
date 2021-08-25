@@ -1,30 +1,17 @@
 #debug tests that I needed to do
 #This will most likely be removed in the initial release.
 
-#$help hall
+import time
+import threading
 
-def separate_str(cmdstr):
-    counter = 1
-    building_word = ''
-    word_list = []
-    for char in cmdstr:
-        if counter != 1:
-            if char == " ":
-                if building_word != '':
-                    word_list.append(building_word)
-                building_word = ''
-            elif char == "$":
-                pass
-            else:
-                building_word += char
-                    
-        else:
-            if char != "$":
-                return False
-        counter += 1
-    if building_word != '':
-        word_list.append(building_word)
-    return word_list
+def hello():
+    print("hello, Timer")
 
-print(separate_str('$help hall'))
+def inter():
+    print("Intercept")
 
+t = threading.Timer(3.0, hello)
+t.start()
+
+t = threading.Timer(1.5, inter)
+t.start()

@@ -11,13 +11,7 @@ def run():
         message.channel.send('timer text!')
         sys.exit()
 
-def timer_msg():
-    print(message)
-
-def timer_start(sec, message):
-    pass
-
-#@Isaac, I'm keeping this code in case you need it
+#@Isaac, I'm keeping this code in case you need it, timer functions are in bot.py
 '''
 def call_timer():
     t = Thread(target=run)

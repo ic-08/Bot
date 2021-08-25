@@ -1,7 +1,6 @@
 #Functions - James (haha, flip), 
 
 import discord
-from timer import timer_start
 
 #these will be values that we will return to Bot.py in order to send the message, with these args
 building_msg = ""
@@ -61,8 +60,9 @@ def search(cmd, args=[]):
         try:
             if int(args[0]) != 0:
                 arrival = timer_setup(int(args[0]))
-                msg_type = "delayed_txt"
+                msg_type = "timer"
                 msg_args['start_msg'] = "Starting timer for " + str(args[0]) + " seconds. Expected arrival time in: " + str(arrival)
+                msg_args['time'] = int(args[0])
         except:
             pass
 

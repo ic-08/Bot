@@ -40,11 +40,11 @@ def separate_str(cmdstr):
         word_list.append(building_word)
     return word_list
 
-def timer_msg():
-    print(message)
+def timer_msg(message):
+    print(message) #You're going to have to do this yourself. @Isaac
 
 def timer_start(sec, message):
-    t = threading.Timer(3.0, timer_msg)
+    t = threading.Timer(sec, timer_msg(message))
     t.start()
 
 @client.event
