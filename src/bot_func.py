@@ -1,6 +1,7 @@
 #Functions - James (haha, flip), 
 
 import discord
+from timer import timer_start
 
 #these will be values that we will return to Bot.py in order to send the message, with these args
 building_msg = ""
@@ -12,6 +13,16 @@ msg_args = {
 #the above args are supposed to fit neatly inside msg_list
 msg_list = {}
 
+def timer_setup(time):
+    day = time // (24 * 3600)
+    time = time % (24 * 3600)
+    hour = time // 3600
+    time %= 3600
+    minutes = time // 60
+    time %= 60
+    seconds = time
+
+    return "%d days, %d hours, %d, minutes, and %d seconds." % (day, hour, minutes, seconds)
 
 #Alphabetical order, please, also add examples as comments before each one
 #executes the functions, longer functions will be called
@@ -19,6 +30,9 @@ msg_list = {}
 #please separate each if statement with an empty line.
 def search(cmd, args=[]): 
     msg_list = {} #resetting the values
+    msg_args = {
+        'reply' : ''
+    }
 
     #ex: $hello
     if cmd == 'hello':
@@ -42,7 +56,15 @@ def search(cmd, args=[]):
         building_msg = embed
         msg_type = "embed"
     
-    if cmd == 'ut':
+    #ex: $timer 2630 (James - I really hate timers.) @Isaac, see timer.py for changes
+    if cmd == 'timer':
+        try:
+            if int(args[0]) != 0:
+                arrival = timer_setup(int(args[0]))
+                msg_type = "delayed_txt"
+                msg_args['start_msg'] = "Starting timer for " + str(args[0]) + " seconds. Expected arrival time in: " + str(arrival)
+        except:
+            pass
 
     #WARNING! Please don't change the if statements to elif
     #I need it to go through each one, not to fulfill an if/elif statement and skip the rest

@@ -11,6 +11,15 @@ def run():
         message.channel.send('timer text!')
         sys.exit()
 
+def timer_msg():
+    print(message)
+
+def timer_start(sec, message):
+    pass
+
+#@Isaac, I'm keeping this code in case you need it
+'''
 def call_timer():
     t = Thread(target=run)
     t.start()
+'''
