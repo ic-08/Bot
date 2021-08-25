@@ -96,11 +96,11 @@ async def on_message(message):
             else:
                 pending_msg = search(command[0])
 
-        if pending_msg[msg_type] == 'txt':
+        if pending_msg['msg_type'] == 'txt':
             await message.channel.send(pending_msg['building_msg'])
-        elif pending_msg[msg_type] == 'embed':
+        elif pending_msg['msg_type'] == 'embed':
             await message.channel.send(embed = pending_msg['building_msg'])
-        elif pending_msg[msg_type] == 'timer':
+        elif pending_msg['msg_type'] == 'timer':
             await message.channel.send(pending_msg['start_msg'])
             timer_start(pending_msg['time'], "Finished timer for " + str(pending_msg['time']))
 
@@ -118,7 +118,6 @@ async def on_message(message):
         title = 'Homelands Bot Help',
         description = "**Hi! Welcome to the Homelands Bot Help Manual**\nI am proud to be part of the Homeland's community!I can currently do a few things, altough by the start of school, I will be providing support, such as reminders, fun games, homework support, and more!\n Have fun and **GO HOMELANDS**!",
 		    color = discord.Color.blue()
-
       )
       embed.set_footer(text="Written with python")
       embed.set_image(url='https://cdn.discordapp.com/attachments/842823949037076520/879383578742517780/unknown.png')
@@ -130,7 +129,6 @@ async def on_message(message):
       await message.channel.send(embed=embed)
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
-
     if message.content.startswith('$ut'):
         last_uptime3 = time.time() - last_uptime2
         timetk = []
