@@ -2,7 +2,7 @@ import discord
 from datetime import *
 import time
 import pytz
-import os 
+import os
 from keep_alive import keep_alive
 from timer import call_timer
 client = discord.Client()
