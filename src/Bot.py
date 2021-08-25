@@ -95,15 +95,16 @@ async def on_message(message):
                 pending_msg = search(command[0], args=command_args)
             else:
                 pending_msg = search(command[0])
-
-        if pending_msg['msg_type'] == 'txt':
-            await message.channel.send(pending_msg['building_msg'])
-        elif pending_msg['msg_type'] == 'embed':
-            await message.channel.send(embed = pending_msg['building_msg'])
-        elif pending_msg['msg_type'] == 'timer':
-            await message.channel.send(pending_msg['start_msg'])
-            timer_start(pending_msg['time'], "Finished timer for " + str(pending_msg['time']))
-
+        try:
+            if pending_msg['msg_type'] == 'txt':
+                await message.channel.send(pending_msg['building_msg'])
+            elif pending_msg['msg_type'] == 'embed':
+                await message.channel.send(embed = pending_msg['building_msg'])
+            elif pending_msg['msg_type'] == 'timer':
+                await message.channel.send(pending_msg['start_msg'])
+                timer_start(pending_msg['time'], "Finished timer for " + str(pending_msg['time']))
+        except:
+            pass
 
 #below was the original code. If you still need to use it, here it is. - James
 #Also, please don't delete it, I probably need to use it as a ref - James
