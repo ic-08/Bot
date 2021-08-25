@@ -3,7 +3,7 @@ from datetime import *
 import time
 from discord import message
 import pytz
-import os 
+import os
 from keep_alive import keep_alive
 import threading
 client = discord.Client()
@@ -49,24 +49,11 @@ def timer_start(sec, message_):
 
 @client.event
 async def on_ready():
-    global last_uptime
-    global last_uptime2
     print('We have logged in as {0.user}'.format(client))
-    last_uptime = datetime.now(pytz.timezone('US/Eastern'))
-    last_uptime2 = time.time()
     await client.change_presence(activity=discord.Game('$help'))
 
 #moved this from the old code into a function
 #couldn't figure out a way to integrate this with bot_func.py - James
-def universal_t():
-    if message.content.startswith('$ut'):
-        last_uptime3 = time.time() - last_uptime2
-        timetk = []
-        timetk.append(int(last_uptime3 / 86400))
-        timetk.append(int((last_uptime3 % 86400) / 3600))
-        timetk.append(int(((last_uptime3 % 86400) % 3600) / 60))
-        timetk.append(int(((last_uptime3 % 86400) % 3600) % 60))
-        return timetk
 
 #new code - James
 command = []
@@ -84,10 +71,6 @@ async def on_message(message):
             pass
         elif command == []:
             pass
-        elif command == 'ut':
-            timetik = universal_t()
-            await message.channel.send(f"I have been awake for {timetik[0]} days, {timetik[1]} hours, {timetik[2]} minutes, {timetik[3]} seconds")
-            await message.channel.send(f"Awake at : {last_uptime}")
         else:
             if len(command) != 1:
                 command_args = command
@@ -149,3 +132,17 @@ var = os.environ['.env']
 keep_alive()     
 client.run(os.environ['.env'])
 #https://www.youtube.com/watch?v=SPTfmiYiuok
+
+
+'''
+last_uptime = datetime.now(pytz.timezone('US/Eastern'))
+    last_uptime2 = time.time()
+def universal_t():
+    if message.content.startswith('$ut'):
+        last_uptime3 = time.time() - last_uptime2
+        timetk = []
+        timetk.append(int(last_uptime3 / 86400))
+        timetk.append(int((last_uptime3 % 86400) / 3600))
+        timetk.append(int(((last_uptime3 % 86400) % 3600) / 60))
+        timetk.append(int(((last_uptime3 % 86400) % 3600) % 60))
+        return timetk'''
