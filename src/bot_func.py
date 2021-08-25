@@ -32,6 +32,7 @@ def search(cmd, args=[]):
     msg_args = {
         'reply' : ''
     }
+    building_msg = ""
 
     #ex: $hello
     if cmd == 'hello':
