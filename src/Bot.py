@@ -85,7 +85,7 @@ async def on_message(message):
         elif command == []:
             pass
         elif command = 'ut':
-            timetik = universal_t
+            timetik = universal_t()
             await message.channel.send(f"I have been awake for {timetik[0]} days, {timetik[1]} hours, {timetik[2]} minutes, {timetik[3]} seconds")
             await message.channel.send(f"Awake at : {last_uptime}")
         else:
