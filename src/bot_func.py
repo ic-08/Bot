@@ -68,10 +68,8 @@ def search(cmd, args=[]):
 
     #WARNING! Please don't change the if statements to elif
     #I need it to go through each one, not to fulfill an if/elif statement and skip the rest
-    if building_msg != "":
-        msg_list['building_msg'] = building_msg
-    if msg_type != "":
-        msg_list['msg_type'] = msg_type
+    msg_list['building_msg'] = building_msg
+    msg_list['msg_type'] = msg_type
     msg_list['msg_args'] = msg_args
     #Since you can't send a message in this file, we'll instead send back arguments for the bot.py file
     return msg_list
