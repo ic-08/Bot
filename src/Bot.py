@@ -7,6 +7,37 @@ from keep_alive import keep_alive
 from timer import call_timer
 client = discord.Client()
 
+starter = '$' #we're using the dollar sign, right? - James
+
+import bot_func
+from bot_func import search #James - we also need to import the bot_func.py
+#The above is a list of functions. Check the file for more details
+
+#James - Arguments will be taken and separated by spaces 
+def separate_str(cmdstr):
+    counter = 1
+    building_word = ''
+    word_list = []
+    for char in cmdstr:
+        if counter != 1:
+            if char == " ":
+                if building_word != '':
+                    word_list.append(building_word)
+                building_word = ''
+            elif char == "$":
+                pass
+            else:
+                building_word += char
+                    
+        else:
+            if char != "$":
+                word_list.clear()
+                word_list.append(False)
+        counter += 1
+    if building_word != '':
+        word_list.append(building_word)
+    return word_list
+
 @client.event
 async def on_ready():
     global last_uptime
@@ -16,6 +47,39 @@ async def on_ready():
     last_uptime2 = time.time()
     await client.change_presence(activity=discord.Game('$help'))
 
+#new code - James
+command = []
+command_args = []
+pending_msg = {}
+
+@client.event
+async def on_message(message):
+    pending_msg = {} #clearing after each use, resetting the values
+    if message.author == client.user:
+        return
+    else:
+        command = separate_str(str(message.content))
+        if command[0] == False:
+            pass
+        elif command == []:
+            pass
+        else:
+            if len(command) != 1:
+                command_args = command
+                command_args.pop(0)
+                pending_msg = search(command[0], args=command_args)
+            else:
+                pending_msg = search(command[0])
+
+    if pending_msg[msg_type] == 'txt':
+        await message.channel.send(pending_msg['building_msg'])
+    elif pending_msg[msg_type] == 'embed':
+        await message.channel.send(embed = pending_msg['building_msg'])
+
+
+#below was the original code. If you still need to use it, here it is. - James
+#Also, please don't delete it, I probably need to use it as a ref - James
+'''
 @client.event
 async def on_message(message):
     global last_uptime , last_uptime2
@@ -52,6 +116,9 @@ async def on_message(message):
         await message.channel.send("Starting")
         await time.sleep(12)
         await message.channel.send("finished")
+
+'''
+
 var = os.environ['.env']  
 keep_alive()     
 client.run(os.environ['.env'])
