@@ -1,9 +1,0 @@
-Ok so this is the plan:
-
-Once I receive $timer <seconds>, I store the timer, the number of seconds, and the date inside a dict,
-Which in itself is inside a list.
-Use schedule module to schedule them
-
-In message_listener, use message.created_at to get time of creation
-
-And then add the time, and then you're done!
