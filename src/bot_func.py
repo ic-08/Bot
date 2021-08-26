@@ -10,7 +10,7 @@ last_uptime2 = time.time()
 building_msg = ""
 msg_type = ""
 msg_args = {
-    'reply' : ''
+    'reply' : False
 }
 #the above args are supposed to fit neatly inside msg_list
 msg_list = {}
@@ -34,7 +34,7 @@ def timer_setup(time):
 def search(cmd, args=[]): 
     msg_list = {} #resetting the values
     msg_args = {
-        'reply' : ''
+        'reply' : False
     }
     building_msg = ""
     msg_type = ""
@@ -43,6 +43,9 @@ def search(cmd, args=[]):
     if cmd == 'hello' or cmd = 'hi': 
         building_msg = "Hello!"
         msg_type = "txt"
+        msg_args = {
+            'reply' : True
+        }
         
     #ex: $ut
     if cmd == 'ut':
