@@ -39,8 +39,8 @@ def search(cmd, args=[]):
     building_msg = ""
     msg_type = ""
 
-    #ex: $hello
-    if cmd == 'hello': 
+    #ex: $hello, $hi
+    if cmd == 'hello' or cmd = 'hi': 
         building_msg = "Hello!"
         msg_type = "txt"
         
