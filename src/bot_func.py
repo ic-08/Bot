@@ -43,6 +43,7 @@ def search(cmd, args=[]):
     if cmd == 'hello' or cmd == 'hi': 
         building_msg = "Hello!"
         msg_type = "txt"
+        msg_args['reply'] = True
 
 
     #ex: $help
