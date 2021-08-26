@@ -43,18 +43,7 @@ def search(cmd, args=[]):
     if cmd == 'hello' or cmd == 'hi': 
         building_msg = "Hello!"
         msg_type = "txt"
-        
-    #ex: $ut
-    if cmd == 'ut':
-        global last_uptime3, last_uptime2, last_uptime
-        last_uptime3 = time.time() - last_uptime2
-        timetk = []
-        timetk.append(int(last_uptime3 / 86400))
-        timetk.append(int((last_uptime3 % 86400) / 3600))
-        timetk.append(int(((last_uptime3 % 86400) % 3600) / 60))
-        timetk.append(int(((last_uptime3 % 86400) % 3600) % 60))
-        building_msg = f"I have been awake for {timetk[0]} days, {timetk[1]} hours, {timetk[2]} minutes, {timetk[3]} seconds\nAwake at : {last_uptime}"
-        msg_type = "txt"
+
 
     #ex: $help
     elif cmd == 'help':
@@ -73,7 +62,7 @@ def search(cmd, args=[]):
         building_msg = embed
         msg_type = "embed"
     
-    #ex: $timer 2630 (James - I really hate timers.) @Isaac, see timer.py for changes
+    #ex: $timer 2630 (James - I really hate timers.)
     if cmd == 'timer':
         try:
             if int(args[0]) != 0:
@@ -83,6 +72,18 @@ def search(cmd, args=[]):
                 msg_args['time'] = int(args[0])
         except:
             pass
+
+    #ex: $ut
+    elif cmd == 'ut':
+        global last_uptime3, last_uptime2, last_uptime
+        last_uptime3 = time.time() - last_uptime2
+        timetk = []
+        timetk.append(int(last_uptime3 / 86400))
+        timetk.append(int((last_uptime3 % 86400) / 3600))
+        timetk.append(int(((last_uptime3 % 86400) % 3600) / 60))
+        timetk.append(int(((last_uptime3 % 86400) % 3600) % 60))
+        building_msg = f"I have been awake for {timetk[0]} days, {timetk[1]} hours, {timetk[2]} minutes, {timetk[3]} seconds\nAwake at : {last_uptime}"
+        msg_type = "txt"
 
     #WARNING! Please don't change the if statements to elif
     #I need it to go through each one, not to fulfill an if/elif statement and skip the rest
