@@ -55,6 +55,7 @@ def search(cmd, args=[]):
         timetk.append(int(((last_uptime3 % 86400) % 3600) % 60))
         building_msg = f"I have been awake for {timetk[0]} days, {timetk[1]} hours, {timetk[2]} minutes, {timetk[3]} seconds\nAwake at : {last_uptime}"
         msg_type = "txt"
+
     #ex: $help
     elif cmd == 'help':
         embed = discord.Embed(
