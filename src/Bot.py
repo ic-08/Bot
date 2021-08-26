@@ -1,8 +1,6 @@
 import discord
 from datetime import *
-import time
 from discord import message
-import pytz
 import os
 from keep_alive import keep_alive
 import threading
