@@ -55,7 +55,7 @@ async def on_ready():
 
 #new code - James
 command = []
-command_args = []
+command_m = []
 pending_msg = {}
 
 @client.event
@@ -63,6 +63,7 @@ async def on_message(message):
     pending_msg = {} #clearing after each use, resetting the values
     if message.author == client.user:
         return
+    
     else:
         command = separate_str(str(message.content))
         if command[0] == False:
@@ -71,9 +72,8 @@ async def on_message(message):
             pass
         else:
             if len(command) != 1:
-                command_args = command
-                command_args.pop(0)
-                pending_msg = search(command[0], args=command_args)
+                command_m = command.pop(0)
+                pending_msg = search(command_m, args=command)
             else:
                 pending_msg = search(command[0])
         try:
