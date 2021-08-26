@@ -79,7 +79,7 @@ async def on_message(message):
         try:
             if pending_msg['msg_type'] == 'txt':
                 if pending_msg['msg_args']['reply'] == True:
-                    await message.reply(pending_msg['building_msg'])
+                    await message.reply(pending_msg['building_msg'], mention_author=False)
                 else:
                     await message.channel.send(pending_msg['building_msg'])
             elif pending_msg['msg_type'] == 'embed':
