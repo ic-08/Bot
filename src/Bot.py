@@ -8,7 +8,7 @@ from keep_alive import keep_alive
 import threading
 client = discord.Client()
 
-starter = '$' #we're using the dollar sign, right? - James
+prefix = '$' #we're using the dollar sign, right? - James
 
 import bot_func
 from bot_func import search #James - we also need to import the bot_func.py
@@ -32,7 +32,7 @@ def separate_str(cmdstr):
                 building_word += char
                     
         else:
-            if char != "$":
+            if char != prefix:
                 word_list.clear()
                 word_list.append(False)
         counter += 1
