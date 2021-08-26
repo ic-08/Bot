@@ -10,7 +10,9 @@ last_uptime2 = time.time()
 building_msg = ""
 msg_type = ""
 msg_args = {
-    'reply' : False
+    'reply' : False,
+    'reply_ping' : False,
+    'file' : None
 }
 #the above args are supposed to fit neatly inside msg_list
 msg_list = {}
@@ -34,7 +36,9 @@ def timer_setup(time):
 def search(cmd, args=[]): 
     msg_list = {} #resetting the values
     msg_args = {
-        'reply' : False
+        'reply' : False,
+        'reply_ping' : False,
+        'file' : None
     }
     building_msg = ""
     msg_type = ""
