@@ -1,14 +1,17 @@
 #Functions - James (haha, flip), 
-
 import discord
+from datetime import *
+import pytz
+import time
 
+last_uptime = datetime.now(pytz.timezone('US/Eastern'))
+last_uptime2 = time.time()   
 #these will be values that we will return to Bot.py in order to send the message, with these args
 building_msg = ""
 msg_type = ""
 msg_args = {
     'reply' : ''
 }
-
 #the above args are supposed to fit neatly inside msg_list
 msg_list = {}
 
@@ -27,6 +30,7 @@ def timer_setup(time):
 #executes the functions, longer functions will be called
 #shorter functions will not have a separate function.
 #please separate each if statement with an empty line.
+
 def search(cmd, args=[]): 
     msg_list = {} #resetting the values
     msg_args = {
@@ -36,10 +40,21 @@ def search(cmd, args=[]):
     msg_type = ""
 
     #ex: $hello
-    if cmd == 'hello':
+    if cmd == 'hello': 
         building_msg = "Hello!"
         msg_type = "txt"
-
+        
+    #ex: $ut
+    if cmd == 'ut':
+        global last_uptime3, last_uptime2, last_uptime
+        last_uptime3 = time.time() - last_uptime2
+        timetk = []
+        timetk.append(int(last_uptime3 / 86400))
+        timetk.append(int((last_uptime3 % 86400) / 3600))
+        timetk.append(int(((last_uptime3 % 86400) % 3600) / 60))
+        timetk.append(int(((last_uptime3 % 86400) % 3600) % 60))
+        building_msg = f"I have been awake for {timetk[0]} days, {timetk[1]} hours, {timetk[2]} minutes, {timetk[3]} seconds\nAwake at : {last_uptime}"
+        msg_type = "txt"
     #ex: $help
     elif cmd == 'help':
         embed = discord.Embed(
