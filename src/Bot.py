@@ -78,8 +78,10 @@ async def on_message(message):
                 pending_msg = search(command[0])
         try:
             if pending_msg['msg_type'] == 'txt':
-                if pending_msg['msg_args']['reply'] = True
-                await message.channel.send(pending_msg['building_msg'])
+                if pending_msg['msg_args']['reply'] = True:
+                    message.reply(pending_msg['building_msg'])
+                else:
+                    await message.channel.send(pending_msg['building_msg'])
             elif pending_msg['msg_type'] == 'embed':
                 await message.channel.send(embed = pending_msg['building_msg'])
             elif pending_msg['msg_type'] == 'timer':
