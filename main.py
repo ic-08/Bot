@@ -70,9 +70,9 @@ async def on_message(message):
     
     else:
         command = separate_str(str(message.content))
-        if command[0] == False:
+        if command == []:
             pass
-        elif command == []:
+        elif command[0] == False:
             pass
         else:
             if len(command) != 1:
