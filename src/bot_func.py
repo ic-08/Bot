@@ -11,7 +11,7 @@ building_msg = ""
 msg_type = ""
 msg_args = {
     'reply' : False,
-    'reply_ping' : False,
+    'reply_ping' : True,
     'file' : None
 }
 #the above args are supposed to fit neatly inside msg_list
@@ -37,7 +37,7 @@ def search(cmd, args=[]):
     msg_list = {} #resetting the values
     msg_args = {
         'reply' : False,
-        'reply_ping' : False,
+        'reply_ping' : True,
         'file' : None
     }
     building_msg = ""
@@ -48,6 +48,7 @@ def search(cmd, args=[]):
         building_msg = "Hello!"
         msg_type = "txt"
         msg_args['reply'] = True
+        msg_args['reply_ping'] = False
 
 
     #ex: $help

@@ -50,13 +50,14 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     await client.change_presence(activity=discord.Game('$help'))
 
-#moved this from the old code into a function
-#couldn't figure out a way to integrate this with bot_func.py - James
-
-#new code - James
 command = []
 command_m = []
 pending_msg = {}
+
+#below two variables are meant to be used in conjunct with MessageCompiler.py
+waitfor_msg = False #will the bot wait for the user to respond after the bots sends a prompt?
+waitfor_msgctx = '' #What specific message will the bot wait for? If empty, that means there is no specific message that the bot waits for
+#Any questions about these two variables, ask me - James
 
 @client.event
 async def on_message(message):
@@ -76,19 +77,19 @@ async def on_message(message):
                 pending_msg = search(command_m, args=command)
             else:
                 pending_msg = search(command[0])
-        try:
-            if pending_msg['msg_type'] == 'txt':
-                if pending_msg['msg_args']['reply'] == True:
-                    await message.reply(pending_msg['building_msg'], mention_author=False)
-                else:
-                    await message.channel.send(pending_msg['building_msg'])
-            elif pending_msg['msg_type'] == 'embed':
-                await message.channel.send(embed = pending_msg['building_msg'])
-            elif pending_msg['msg_type'] == 'timer':
-                await message.channel.send(pending_msg['start_msg'])
-                timer_start(pending_msg['time'], "Finished timer for " + str(pending_msg['time']))
-        except:
-            pass
+            try:
+                if pending_msg['msg_type'] == 'txt':
+                    if pending_msg['msg_args']['reply'] == True:
+                        await message.reply(pending_msg['building_msg'], mention_author=False)
+                    else:
+                        await message.channel.send(pending_msg['building_msg'])
+                elif pending_msg['msg_type'] == 'embed':
+                    await message.channel.send(embed = pending_msg['building_msg'])
+                elif pending_msg['msg_type'] == 'timer':
+                    await message.channel.send(pending_msg['start_msg'])
+                    timer_start(pending_msg['time'], "Finished timer for " + str(pending_msg['time']))
+            except:
+                pass
 
 #below was the original code. If you still need to use it, here it is. - James
 #Also, please don't delete it, I probably need to use it as a ref - James
