@@ -36,6 +36,8 @@ def separate_str(cmdstr):
         counter += 1
     if building_word != '':
         word_list.append(building_word)
+    for word in range(len(word_list)):
+        word_list[word] = word_list[word].lower()
     return word_list
 
 def timer_msg(message_):
