@@ -92,7 +92,7 @@ def search(cmd, args=[]):
         embed.set_footer(text="Written with python")
         embed.set_image(url='https://cdn.discordapp.com/attachments/842823949037076520/879383578742517780/unknown.png')
         embed.add_field(name='Prefix', value = '`$`' , inline =False)
-        embed.add_field(name='Commands', value = '`hello` `help` `ut`' , inline =False)
+        embed.add_field(name='Commands', value = '`hello` `help` `ut` `8ball`' , inline =False)
         embed.add_field(name='Peel Link', value = '[www.peelschools.org](https://www.peelschools.org/Pages/default.aspx)' , inline =True)
         embed.add_field(name='School Holidays', value = '[Holidays](https://www.peelschools.org/calendar/Documents/School%20Year%20Calendar%202021-2022%20Regular%20Elementary%20and%20Secondary%20chart.pdf)' , inline =True)
 
