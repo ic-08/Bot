@@ -3,7 +3,7 @@
 import discord
 
 class Compiler:
-    def __init__(self, ctx, content=None, *, spec_channel=None, type='txt', args=None, file=None, files=None, embed=None, embeds=None):
+    def __init__(self, ctx, content=None, *, spec_channel=None, type='txt', args=None, file=None, files=None, embed=None, embeds=None, wait=False, waitfor=None, waitspec = False):
        
         self.ctx = ctx 
         #the context, ex: the message that was sent by a user | -> variable
@@ -31,16 +31,22 @@ class Compiler:
         
         self.embeds = embeds 
         #multiple embeds, DO NOT CONFUSE WITH self.embed | -> list of embeds
-    
-    async def categorize_msg():
-        pass #checks type, args, file, files, embed, and embeds
+
+        self.wait = wait
+        #if true, waits for message | -> bool
+
+        self.waitfor = waitfor
+        #what should the bot wait for in the follow up? | -> string
+
+        self.waitspec = waitspec
+        #if true, waits for message from specific person, rather than anyone | -> bool
 
     #add specific channel functionality
-    async def received_msg():
+    async def send_msg():
         if Compiler.args['reply'] == True:
             if Compiler.args['reply_ping'] == True:
                 await Compiler.ctx.reply(Compiler.content)
             else:
                 await Compiler.ctx.reply(Compiler.content, mention_author=False)
         else:
-            await Compiler.ctx.channel.send(Compiler.content)
+            await Compiler.ctx.channel.send(Compiler.content, )
