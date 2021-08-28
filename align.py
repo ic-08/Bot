@@ -1,6 +1,7 @@
 #Isaac, you request this... Also, I didn't paste all of your code in here, and I also renamed some variables for my own sake
 #So just copy and paste this code, and then re-adjust your code... haha... - James
 
+#Also, Isaac, I'm planning on debugging this with you together. If it works on the first try... Wow, because I did no debugging, all of this was done in my head, and also my head is hurting 👍
 
 ## Also, Isaac, thanks for the code you put in the testing.py, helped me alot 😉 ##
 
