@@ -3,6 +3,7 @@ import discord
 from datetime import *
 import pytz
 import time
+import random
 
 last_uptime = datetime.now(pytz.timezone('US/Eastern'))
 last_uptime2 = time.time()   
@@ -50,7 +51,37 @@ def search(cmd, args=[]):
         msg_args['reply'] = True
         msg_args['reply_ping'] = False
 
+    #ex: $8b, $8ball
+    if cmd == '8b' or cmd == '8ball': # You can write this in assest if you want but its really not that much
 
+        prompts = [
+            'It is certain.',
+            'It is decidedly so.',
+            'Without a doubt.',
+            'Yes definitely.',
+            'You may rely on it.',
+            'As I see it, yes.',
+            'Most likely.',
+            'Outlook good.',
+            'Yes.',
+            'Signs point to yes.',
+            'Reply hazy, try again.',
+            'Ask again later.',
+            'Better not tell you now.',
+            'Cannot predict now.',
+            'Concentrate and ask again.',
+            "Don't count on it.",
+            'My reply is no.',
+            'My sources say no.',
+            'Outlook not so good.',
+            'Very doubtful.'
+        ]
+        try:
+            print(args[0])
+            building_msg = str(random.choice(prompts))
+        except:
+            building_msg = 'No prompt after command try `$8b {prompt}'
+        msg_type = 'txt'
     #ex: $help
     elif cmd == 'help':
         embed = discord.Embed(
