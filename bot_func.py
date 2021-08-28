@@ -3,6 +3,7 @@ import discord
 from datetime import *
 import pytz
 import time
+import random
 
 last_uptime = datetime.now(pytz.timezone('US/Eastern'))
 last_uptime2 = time.time()   
@@ -50,7 +51,37 @@ def search(cmd, args=[]):
         msg_args['reply'] = True
         msg_args['reply_ping'] = False
 
+    #ex: $8b, $8ball
+    if cmd == '8b' or cmd == '8ball': # You can write this in assest if you want but its really not that much
 
+        prompts = [
+            'It is certain.',
+            'It is decidedly so.',
+            'Without a doubt.',
+            'Yes definitely.',
+            'You may rely on it.',
+            'As I see it, yes.',
+            'Most likely.',
+            'Outlook good.',
+            'Yes.',
+            'Signs point to yes.',
+            'Reply hazy, try again.',
+            'Ask again later.',
+            'Better not tell you now.',
+            'Cannot predict now.',
+            'Concentrate and ask again.',
+            "Don't count on it.",
+            'My reply is no.',
+            'My sources say no.',
+            'Outlook not so good.',
+            'Very doubtful.'
+        ]
+        try:
+            print(args[0])
+            building_msg = str(random.choice(prompts))
+        except:
+            building_msg = 'No prompt after command try `$8b {prompt}'
+        msg_type = 'txt'
     #ex: $help
     elif cmd == 'help':
         embed = discord.Embed(
@@ -61,7 +92,7 @@ def search(cmd, args=[]):
         embed.set_footer(text="Written with python")
         embed.set_image(url='https://cdn.discordapp.com/attachments/842823949037076520/879383578742517780/unknown.png')
         embed.add_field(name='Prefix', value = '`$`' , inline =False)
-        embed.add_field(name='Commands', value = '`hello` `help` `ut`' , inline =False)
+        embed.add_field(name='Commands', value = '`hello` `help` `ut` `8ball`' , inline =False)
         embed.add_field(name='Peel Link', value = '[www.peelschools.org](https://www.peelschools.org/Pages/default.aspx)' , inline =True)
         embed.add_field(name='School Holidays', value = '[Holidays](https://www.peelschools.org/calendar/Documents/School%20Year%20Calendar%202021-2022%20Regular%20Elementary%20and%20Secondary%20chart.pdf)' , inline =True)
 
