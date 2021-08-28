@@ -33,7 +33,6 @@ def separate_str(cmdstr):
             if char != prefix:
                 word_list.clear()
                 word_list.append(False)
-		return word_list
         counter += 1
     if building_word != '':
         word_list.append(building_word)
