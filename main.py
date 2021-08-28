@@ -33,6 +33,7 @@ def separate_str(cmdstr):
             if char != prefix:
                 word_list.clear()
                 word_list.append(False)
+		return word_list
         counter += 1
     if building_word != '':
         word_list.append(building_word)
@@ -69,9 +70,9 @@ async def on_message(message):
     
     else:
         command = separate_str(str(message.content))
-        if command[0] == False:
+        if command == []:
             pass
-        elif command == []:
+        elif command[0] == False:
             pass
         else:
             if len(command) != 1:
