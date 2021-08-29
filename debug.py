@@ -1,7 +1,6 @@
 #Used for testing, will most likely be deleted in the release version
 
-import os
+def foo(pos=None, *, forcenamed):
+    print(pos, forcenamed)
 
-list = os.listdir('assets')
-
-print(list[0][1])
+foo(1, forcenamed=2)
