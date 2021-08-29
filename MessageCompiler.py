@@ -3,13 +3,16 @@
 import discord
 
 class Compiler:
-    def __init__(self, ctx, content=None, *, spec_channel=None, type='txt', args=None, file=None, files=None, embed=None, embeds=None, wait=False, waitfor=None, waitspec = False):
+    def __init__(self, ctx, content=None, *, client, spec_channel=None, type='txt', args=None, file=None, files=None, embed=None, embeds=None, wait=False, waitfor=None, waitspec=False, editable=False, editlist={}):
        
         self.ctx = ctx 
         #the context, ex: the message that was sent by a user | -> variable
 
         self.content = content 
         #the content of the message you're about to send | -> string
+
+        self.client = client #to do it: compiler(ctx=_context, _content, client=_Client)
+        #the client | -> discord.Client()
 
         self.spec_channel = spec_channel 
         #a specific channel that you're going to send to? | -> channelid
@@ -40,6 +43,12 @@ class Compiler:
 
         self.waitspec = waitspec
         #if true, waits for message from specific person, rather than anyone | -> bool
+
+        self.editable = editable
+        #if editable, saves to editlist, see below. | -> bool
+
+        self.editlist = editlist
+        #the ctx variables saved here will be deleted after a set amount of time detailed in the key:value | -> dict
 
     #add specific channel functionality
     async def send_msg():
