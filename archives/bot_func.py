@@ -52,7 +52,7 @@ def search(cmd, args=[]):
         msg_args['reply_ping'] = False
 
     #ex: $8b, $8ball
-    if cmd == '8b' or cmd == '8ball': # You can write this in assest if you want but its really not that much
+    if cmd == '8b' or cmd == '8ball':
 
         prompts = [
             'It is certain.',
@@ -82,6 +82,7 @@ def search(cmd, args=[]):
         except:
             building_msg = 'No prompt after command try `$8b {prompt}'
         msg_type = 'txt'
+
     #ex: $help
     elif cmd == 'help':
         embed = discord.Embed(
